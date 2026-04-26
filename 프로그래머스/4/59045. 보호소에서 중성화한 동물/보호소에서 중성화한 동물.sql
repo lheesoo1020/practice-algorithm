@@ -1,0 +1,9 @@
+SELECT i.ANIMAL_ID, i.ANIMAL_TYPE, i.NAME
+FROM (SELECT *
+      FROM ANIMAL_INS
+      WHERE SEX_UPON_INTAKE = 'Intact Male' OR SEX_UPON_INTAKE = 'Intact Female'
+     ) i
+JOIN (SELECT *
+      FROM ANIMAL_OUTS
+     WHERE SEX_UPON_OUTCOME = 'Spayed Female' OR SEX_UPON_OUTCOME = 'Neutered Male'
+     ) o ON i.ANIMAL_ID = o.ANIMAL_ID
